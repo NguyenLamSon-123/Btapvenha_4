@@ -1,8 +1,7 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1c5be494-bc59-4a43-9b67-8d55816e3f3d" /># Btapvenha_4
 # nguyễn lam sơn_K225480106076
 ## Bài tập 4 môn Phát triển ứng dụng với mã nguồn mở
 # Khai thác N8N để tự động đăng bài lên WordPress
-# bước 1:
+# bước 1: tạo folder và truy cập
 mkdir btapvenha4
 cd btapvenha4
 tạo file cấu hình:
@@ -38,38 +37,17 @@ bước 2: Cấu hình Credential (mã kết nối)
 ## <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5f89ba9d-7db4-47fa-aad0-24d78ae48d30" />
 Lấy Access Token từ Telegram <br>
 Mở ứng dụng Telegram trên điện thoại hoặc máy tính của bạn lên. <br>
+
 Trên thanh tìm kiếm, gõ chính xác: @BotFather (chọn tài khoản có dấu tích xanh chính chủ nhé). <br>
 Bấm Start rồi gõ lệnh: /newbot và ấn gửi. <br>
 @BotFather sẽ bảo bạn đặt tên cho Bot (Tên hiển thị) -> Bạn gõ tên bất kỳ (Ví dụ: LamSon AI Bot) rồi gửi. <br>
+
 Tiếp theo, @BotFather yêu cầu tạo Username (tên định danh) cho Bot -> Bạn nhập tên viết liền không dấu, phải kết thúc bằng chữ bot nguyenlamson_ai_bot <br>
 Sau khi tạo xong, @BotFather sẽ gửi cho bạn một đoạn tin nhắn dài, trong đó có một chuỗi ký tự loằng ngoằng nửa số nửa chữ (Ví dụ dạng: 739485028:AAH_GxF...). Đó chính là Access Token. Bạn hãy chạm hoặc click vào chuỗi đó để Copy. <br>
 bước 3: Mồi dữ liệu và Test thử <br>
+
 Trên Telegram, bạn tìm đúng cái tên Username con bot bạn vừa tạo ( @nguyenlamson_ai_bot ), bấm Start (hoặc /start). <br?
 Nhắn cho con bot của bạn một tin nhắn bất kỳ, ví dụ gõ: "Bài test số 1" rồi ấn gửi. <br>
 Quay lại giao diện n8n, nhìn sang cột bên phải (chỗ vùng màu xám có chữ No trigger output ấy), bấm vào nút màu cam Test this trigger (hoặc Listen for test event) <br>
 # kết quả trả về 
 ## <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5b85bc25-fbbf-4fa2-89da-a6fbb612334a" />
-# Thêm Hành động (Action) cho quy trình
-1. họn ứng dụng bạn muốn thực hiện hành động.
-2. Chọn lại Telegram -> Chọn hành động Send a text message (Gửi tin nhắn) để bot tự động nhắn câu trả lời lại cho người vừa chat. <br> 
-Hoặc: Chọn Google Sheets để tự động lưu thông tin khách hàng vào bảng tính, chọn OpenAI để biến nó thành bot chat AI...
-## <img width="1914" height="967" alt="image" src="https://github.com/user-attachments/assets/2edffbdd-45c1-42dd-8961-e04c4c3b31a5" />
-# cấu hình:
-Bước 1: Trỏ đúng người nhận (Chat ID) <br>
-Bot cần biết chính xác ID của người vừa nhắn tin để phản hồi lại đúng người đó, tránh nhắn nhầm hoặc báo lỗi. <br> 
-
-Nhìn sang cột INPUT (bên trái), bạn sẽ thấy danh sách dữ liệu bắt được từ bước trước. Hãy nhìn theo đường dẫn phân nhánh này: message -> chat -> id (nó đang chứa dãy số 5288048821 của tài khoản bạn đó).
-
-Cách làm: Bấm giữ chuột vào chữ id (hoặc dãy số), sau đó kéo và thả nó sang cái ô trống có chữ Chat ID ở cột giữa. Khi thả vào, ô đó sẽ tự động điền một đoạn biến số (nhìn giống như vầy: ={{ $json.message... }}) là chuẩn bài.
-
-Bước 2: Viết nội dung tin nhắn (Text)
-Cũng ở cột giữa, ngay bên dưới ô Chat ID là ô Text (Văn bản).
-
-Bạn chỉ việc click vào đó và gõ bất cứ câu gì bạn muốn bot trả lời.
-
-Ví dụ: "Xin chào! Mình là bot tự động. Mình đã nhận được tin nhắn của bạn rồi nhé!"
-
-Bước 3: Chạy thử hành động
-Sau khi điền xong 2 ô trên, bạn bấm nút màu cam Execute step ở góc bên phải.
-
-Lúc này n8n sẽ thực thi lệnh. Bạn hãy mở app Telegram trên điện thoại lên xem con bot đã tự động "bắn" tin nhắn phản hồi về cho bạn chưa nhé!
